@@ -23,7 +23,7 @@ section[id] {
 }
 
 .services-section {
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
   color: #372920;
   padding: 16px 16px 40px;
 }
@@ -554,7 +554,7 @@ header {
 
 /* About Section styles */
 .about-section {
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
   min-height: 100vh;
   padding: 16px;
   display: flex;
@@ -678,7 +678,7 @@ header {
 
 /* Projects Section styles */
 .projects-section {
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
   color: #372920;
   padding: 80px 16px 120px;
 }
@@ -813,7 +813,7 @@ header {
 }
 /* FAQ Section styles */
 .faq-section {
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
   color: #372920;
   padding: 88px 16px 160px;
 }
@@ -926,7 +926,7 @@ header {
 
 /* Quote Section styles: линии рисуются сами, когда секция появляется на экране */
 .quote-section {
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
 }
 
 .quote-sticky {
@@ -1043,7 +1043,7 @@ body.leaving {
   grid-template-columns: 1fr 1fr;
   column-gap: 12px;
   padding: 16px 16px 240px; /* текст занимает чуть больше половины высоты секции */
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
   color: #372920;
   font-family: 'Inter', sans-serif;
   font-size: 15px;
@@ -1084,7 +1084,7 @@ body.leaving {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   padding: 0 16px; /* без нижнего отступа: линии следующей секции «вылезают» прямо из последнего фото */
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
 }
 
 .project-gallery[hidden] {
@@ -1108,7 +1108,7 @@ body.leaving {
 /* Project page: блок «Наступний проєкт» */
 .next-project-section {
   padding: 100px 16px 16px;
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
 }
 
 .next-project {
@@ -1303,7 +1303,7 @@ body.leaving {
 
 /* Страница ошибки 404 (буквы B O N используют те же стили, что и в футере) */
 .error-page {
-  background-color: #FAF4F0;
+  background-color: #F2F2F2;
   color: #372920;
 }
 
@@ -1792,7 +1792,7 @@ body.leaving {
     top: 36px;
     padding: 0;
     gap: 0;
-    background: #FAF4F0;
+    background: #F2F2F2;
     /* плавное появление: меню всегда в разметке, а показывается прозрачностью */
     display: flex;
     visibility: hidden;

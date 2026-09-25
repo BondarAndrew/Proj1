@@ -22,20 +22,26 @@
     const maxDist = Math.hypot(cx, cy);
 
     window.QUOTE_PATHS.forEach(d => {
-      const m = /^M\s*(-?[\d.]+)[\s,]+(-?[\d.]+)/.exec(d);
-      const x = m ? parseFloat(m[1]) : cx;
-      const y = m ? parseFloat(m[2]) : cy;
+      const nums = d.match(/-?\d*\.?\d+/g).map(Number);
+      const sx = nums[0], sy = nums[1];
+      const ex = nums[nums.length - 2], ey = nums[nums.length - 1];
+      const dStart = Math.hypot(sx - cx, sy - cy);
+      const dEnd = Math.hypot(ex - cx, ey - cy);
+      // линия всегда рисуется от края к центру: если её конец дальше от центра,
+      // прорисовываем «с конца» (отрицательное смещение штриха)
+      const dir = dEnd > dStart ? -1 : 1;
 
       const path = document.createElementNS(NS, 'path');
       path.setAttribute('d', d);
       path.setAttribute('pathLength', '1');   // длина = 1, как в макете
       path.style.strokeDasharray = '1 1';
-      path.style.strokeDashoffset = '1';
+      path.style.strokeDashoffset = String(dir);
       svg.appendChild(path);
       items.push({
         path,
+        dir,
         // чем дальше от центра начало линии, тем раньше она начнёт рисоваться
-        start: (1 - Math.min(Math.hypot(x - cx, y - cy) / maxDist, 1)) * 0.55
+        start: (1 - Math.min(Math.max(dStart, dEnd) / maxDist, 1)) * 0.55
       });
     });
   }
@@ -50,7 +56,7 @@
   function draw(progress) {
     items.forEach(it => {
       const raw = Math.min(Math.max((progress * 1.05 - it.start) / DURATION, 0), 1);
-      it.path.style.strokeDashoffset = 1 - easeInOut(raw);
+      it.path.style.strokeDashoffset = it.dir * (1 - easeInOut(raw));
     });
   }
 
