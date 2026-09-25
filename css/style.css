@@ -948,9 +948,11 @@ header {
 
 .quote-lines path {
   fill: none;
-  stroke: #E6DED6;
+  /* как в макете: обводка #372920 с прозрачностью 0.5 в группе с прозрачностью 0.2 */
+  stroke: #372920;
+  stroke-opacity: 0.1;
   stroke-width: 1;
-  stroke-linecap: round;
+  stroke-linecap: butt; /* с round на конце спрятанной линии оставалась бы точка */
 }
 
 .quote-text {
