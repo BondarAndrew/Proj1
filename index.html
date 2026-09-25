@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BON — архітектурна студія</title>
+    <meta name="description" content="BON — архітектурна студія в Одесі. Проєктуємо інтер’єри та архітектуру, в яких форма має сенс, а кожна деталь є частиною цілого.">
+    <meta name="theme-color" content="#FAF4F0">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BON">
+    <meta property="og:locale" content="uk_UA">
+    <meta property="og:title" content="BON — архітектурна студія">
+    <meta property="og:description" content="BON — архітектурна студія в Одесі. Проєктуємо інтер’єри та архітектуру, в яких форма має сенс, а кожна деталь є частиною цілого.">
+    <meta property="og:url" content="https://bondarandrew.github.io/">
+    <meta property="og:image" content="https://bondarandrew.github.io/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BON — архітектурна студія">
+    <meta name="twitter:description" content="BON — архітектурна студія в Одесі. Проєктуємо інтер’єри та архітектуру, в яких форма має сенс, а кожна деталь є частиною цілого.">
+    <meta name="twitter:image" content="https://bondarandrew.github.io/img/og-image.jpg">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon/favicon-192.png">
+    <link rel="apple-touch-icon" href="img/favicon/favicon-180.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/TwidGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <a href="index.html" class="logo-link" aria-label="На головну">
+                    <img src="img/BON_logo.svg" alt="BON" class="logo-img">
+                </a>
+            </div>
+            <a class="nav-item" href="#about">
+                Про нас
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item" href="#projects">
+                Проєкти
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item" href="#services">
+                Послуги
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item contacts" href="#contact">
+                Контакти
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+        <button class="burger-menu" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="mobile-menu">
+            <a class="nav-item" href="#about">Про нас</a>
+            <a class="nav-item" href="#projects">Проєкти</a>
+            <a class="nav-item" href="#services">Послуги</a>
+            <a class="nav-item contacts" href="#contact">Контакти</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-slider">
+            <div class="hero-track">
+                <div class="hero-slide">
+                    <img src="img/Hero/Hero1.webp" alt="RISE Café">
+                </div>
+                <div class="hero-slide">
+                    <img src="img/Hero/Hero2.webp" alt="Квартира у ЖК Кандинський">
+                </div>
+                <div class="hero-slide">
+                    <img src="img/Hero/Hero3.webp" alt="Приватний будинок у Східниці">
+                </div>
+                <div class="hero-slide">
+                    <img src="img/Hero/Hero1.webp" alt="RISE Café">
+                </div>
+            </div>
+
+            <!-- Текст и счётчик теперь СНАРУЖИ трека, фиксированы в углах -->
+            <div class="hero-caption" id="heroCaption">RISE Café <span class="arrow">→</span></div>
+            <div class="hero-counter"><span class="current">1</span>/<span class="total">3</span></div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="about-block about-block-1">
+                <div class="about-title-wrap">
+                    <h2 class="about-title">
+                        Архітектурна студія, <span style="white-space: nowrap;">що працює з простором,</span><br>
+                        матеріалом та способом життя.
+                    </h2>
+                </div>
+                <div class="about-video-rail">
+                    <video
+                      class="about-video-small"
+                      src="img/swcond_secktion_Video.mp4?v=4"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                    ></video>
+                </div>
+            </div>
+
+            <div class="about-block about-block-2">
+                <div class="about-text-group">
+                    <p class="about-text">
+                        Ми проєктуємо інтер'єри та архітектуру, в яких форма має сенс, 
+                        а кожна деталь є частиною цілого.
+                    </p>
+                    <p class="about-text">
+                        Для нас хороший простір — це не про стиль. Це про те, 
+                        як людина прокидається, рухається, зустрічається, 
+                        залишається наодинці та&nbsp;відчуває себе вдома.
+                    </p>
+                    <p class="about-text">
+                        Від першої лінії креслення до останнього предмета ми працюємо 
+                        над тим, щоб простір був не просто красивим, а живим, 
+                        цілісним і своїм.
+                    </p>
+                </div>
+                <img src="img/second_secktion_Photo.webp" alt="" class="about-img about-img-large">
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="projects-head">
+                <h2 class="projects-title">Наші проєкти</h2>
+            </div>
+
+            <div class="projects-grid">
+                <a class="project-card" href="project.html?id=rise">
+                    <div class="project-info">
+                        <span class="project-num">008</span>
+                        <span class="project-name">RISE Café</span>
+                        <span class="project-type">Кафе</span>
+                    </div>
+                    <div class="project-media"><img src="img/Projects/rise.webp" alt="RISE Café" loading="lazy"></div>
+                </a>
+                <a class="project-card" href="project.html?id=kandinsky">
+                    <div class="project-info">
+                        <span class="project-num">007</span>
+                        <span class="project-name">ЖК «Кандинський»</span>
+                        <span class="project-type">Квартира</span>
+                    </div>
+                    <div class="project-media"><img src="img/Projects/kandinsky.webp" alt="Квартира у ЖК Кандинський" loading="lazy"></div>
+                </a>
+                <a class="project-card" href="project.html?id=shidnytsia">
+                    <div class="project-info">
+                        <span class="project-num">006</span>
+                        <span class="project-name">Селище Східниця</span>
+                        <span class="project-type">Приватний будинок</span>
+                    </div>
+                    <div class="project-media"><img src="img/Projects/shidnytsia.webp" alt="Приватний будинок у Східниці" loading="lazy"></div>
+                </a>
+                <a class="project-card" href="project.html?id=grace">
+                    <div class="project-info">
+                        <span class="project-num">005</span>
+                        <span class="project-name">Grace</span>
+                        <span class="project-type">Ресторан</span>
+                    </div>
+                    <div class="project-media"><img src="img/Projects/grace.webp" alt="Ресторан Grace" loading="lazy"></div>
+                </a>
+            </div>
+
+                        <div class="projects-extra" id="projectsExtra">
+                <div class="projects-extra-inner">
+                    <div class="projects-grid">
+                        <a class="project-card" href="project.html?id=p55">
+                            <div class="project-info">
+                                <span class="project-num">004</span>
+                                <span class="project-name">P_55</span>
+                                <span class="project-type">Апартаменти</span>
+                            </div>
+                            <div class="project-media"><img src="img/Projects/project-03.webp" alt="P_55" loading="lazy"></div>
+                        </a>                        <a class="project-card" href="project.html?id=f001">
+                            <div class="project-info">
+                                <span class="project-num">003</span>
+                                <span class="project-name">F_001</span>
+                                <span class="project-type">Апартаменти</span>
+                            </div>
+                            <div class="project-media"><img src="img/Projects/project-04.webp" alt="F_001" loading="lazy"></div>
+                        </a>                        <a class="project-card" href="project.html?id=p22">
+                            <div class="project-info">
+                                <span class="project-num">002</span>
+                                <span class="project-name">P_22</span>
+                                <span class="project-type">Апартаменти</span>
+                            </div>
+                            <div class="project-media"><img src="img/Projects/project-01.webp" alt="P_22" loading="lazy"></div>
+                        </a>                        <a class="project-card" href="project.html?id=lapki">
+                            <div class="project-info">
+                                <span class="project-num">001</span>
+                                <span class="project-name">Lapki</span>
+                                <span class="project-type">Салон для хвостатих</span>
+                            </div>
+                            <div class="project-media"><img src="img/Projects/project-02.webp" alt="Lapki" loading="lazy"></div>
+                        </a>                    </div>
+                </div>
+            </div>
+
+            <a class="projects-more projects-hide hidden" href="#" id="projectsHide" aria-controls="projectsExtra">Приховати <span class="nav-dot"><svg width="8" height="2" viewBox="0 0 8 2" xmlns="http://www.w3.org/2000/svg" style="display: block;"><rect width="8" height="1" y="0.5" fill="#775F53"/></svg></span></a>
+
+            <a class="projects-more" href="#" id="projectsMore" aria-controls="projectsExtra" aria-expanded="false">Всі проєкти <span class="nav-dot"><svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;"><circle cx="3" cy="3" r="2.5" stroke="#775F53"/></svg></span></a>
+        </section>
+
+        <section class="services-section" id="services">
+            <h2 class="services-title">Наші послуги</h2>
+
+            <div class="services-list">
+                <article class="service-row">
+                    <div class="service-num"><span class="service-num-label">01</span><span class="service-num-desc">Квартири, приватні будинки, котеджі, таунхауси.</span></div>
+                    <h3 class="service-name">Проєктування<br>житлових просторів</h3>
+                    <div class="service-side">
+                        <p class="service-text">Команда BON architects створює простори з урахуванням вашого ритму, звичок, потреб і того, <span style="white-space: nowrap;">що для вас означає ДІМ.</span></p>
+                        <div class="service-detail" id="service-detail-1">
+                            <div class="service-detail-inner">
+                                <p>Планувальні рішення і концепція, технічна документація та комплектація - ми проходимо весь шлях проєктування разом.</p>
+                                <p>Орієнтовна вартість проєктування - 45 євро/м².<br>Остаточна вартість визначається після брифу, з урахуванням площі, задач та складності проєкту.</p>
+                            </div>
+                        </div>
+                        <a class="service-more" href="#" aria-expanded="false" aria-controls="service-detail-1">Детальніше <span class="service-plus">+</span></a>
+                    </div>
+                </article>
+
+                <article class="service-row">
+                    <div class="service-num"><span class="service-num-label">02</span><span class="service-num-desc">Ресторани, кафе, готелі, апарт-готелі,<br>офісні приміщення.</span></div>
+                    <h3 class="service-name">Проєктування<br>комерційних просторів</h3>
+                    <div class="service-side">
+                        <p class="service-text">Створюємо простори, які працюють не лише візуально, а й на бізнес - формуємо атмосферу, сценарії взаємодії з клієнтом та функціональну структуру відповідно до характеру бренду.</p>
+                        <div class="service-detail" id="service-detail-2">
+                            <div class="service-detail-inner">
+                                <p>Від концепції до робочої документації та комплектації - розробляємо простір як цілісний досвід для його гостей і команди.</p>
+                                <p>Вартість проєктування - від 50 €/м².<br>Остаточна вартість визначається після брифу, з урахуванням площі, задач та складності проєкту.</p>
+                            </div>
+                        </div>
+                        <a class="service-more" href="#" aria-expanded="false" aria-controls="service-detail-2">Детальніше <span class="service-plus">+</span></a>
+                    </div>
+                </article>
+
+                <article class="service-row">
+                    <div class="service-num"><span class="service-num-label">03</span><span class="service-num-desc">Контролюємо виконання робіт згідно проєкту.</span></div>
+                    <h3 class="service-name">Авторський супровід</h3>
+                    <div class="service-side">
+                        <p class="service-text">Зберігаємо задум проєкту під час його реалізації - контролюємо відповідність виконаних робіт проєктним рішенням, допомагаємо команді на будівництві та оперативно приймаємо рішення щодо питань, які виникають у процесі.</p>
+                        <div class="service-detail" id="service-detail-3">
+                            <div class="service-detail-inner">
+                                <p>Вартість авторського супроводу - від 500 €/місяць.<br>Остаточна вартість залежить від масштабу проєкту, його складності та інтенсивності робіт.</p>
+                            </div>
+                        </div>
+                        <a class="service-more" href="#" aria-expanded="false" aria-controls="service-detail-3">Детальніше <span class="service-plus">+</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="faq-section" id="faq">
+            <div class="faq-inner">
+                <h2 class="faq-title">FAQ</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-1">
+                            <span>Чи є у вас авторський супровід і технічний нагляд?</span>
+                            <span class="faq-plus" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-a" id="faq-a-1">
+                            <div class="faq-a-inner">
+                                <p>BON здійснює авторський супровід, але не технічний нагляд.</p>
+                                <p>Авторський супровід відповідає за те, щоб реалізований простір залишався максимально близьким до затвердженого проєкту - від планувальних рішень до матеріалів і деталей.</p>
+                                <p>Технічний нагляд - це окрема функція, яка передбачає контроль якості та технології виконання будівельних робіт, відповідності нормам і стандартам.</p>
+                                <p>Ми відповідаємо за задум і його реалізацію. Технічний нагляд - за якість виконання будівельних робіт</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-2">
+                            <span>Як відбувається оплата проєкту?</span>
+                            <span class="faq-plus" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-a" id="faq-a-2">
+                            <div class="faq-a-inner">
+                                <p>Проєктування складається з 5 етапів:</p>
+                                <ol>
+                                    <li>Бриф та планування</li>
+                                    <li>Концепція</li>
+                                    <li>3D-моделювання та візуалізація</li>
+                                    <li>Технічні креслення</li>
+                                    <li>Комплектація</li>
+                                </ol>
+                                <p>Перед початком кожного етапу вноситься 100% передплата за його вартість.</p>
+                                <p>З орієнтовною вартістю проєктування можна ознайомитись <a href="#services">тут</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-3">
+                            <span>Скільки часу займає проєктування?</span>
+                            <span class="faq-plus" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-a" id="faq-a-3">
+                            <div class="faq-a-inner"><p>Тривалість розробки проєкту залежить від площі та складності об’єкта. У середньому повний цикл проєктування займає 2-4 місяці. Ми не радимо починати будівництво до повної готовності проєкту.</p></div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-4">
+                            <span>Скільки часу займає ремонт?</span>
+                            <span class="faq-plus" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-a" id="faq-a-4">
+                            <div class="faq-a-inner">
+                                <p>Термін реалізації залежить від багатьох факторів: темпу виконання робіт, своєчасності оплат і поставок матеріалів, а також роботи підрядних організацій.</p>
+                                <p>BON не несе відповідальності за терміни виконання ремонтних робіт підрядниками. Ми відповідаємо за свою частину процесу - авторський супровід, оперативний розгляд питань та надання необхідних проєктних рішень.</p>
+                                <p>Ми рекомендуємо окремо фіксувати терміни та умови роботи з кожним підрядником.</p>
+                                <p>У середньому проєктування та реалізація проєкту займають від 6 до 18 місяців.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-5">
+                            <span>Чи можна вносити зміни до проєкту?</span>
+                            <span class="faq-plus" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-a" id="faq-a-5">
+                            <div class="faq-a-inner">
+                                <p>Так. Під час роботи над кожним етапом передбачено до 2 коригувань. Вони входять у вартість етапу.</p>
+                                <p>Після погодження та завершення етапу внесення змін до затверджених рішень, а також додаткові коригування понад 2, оплачуються окремо.</p>
+                                <p>Обсяг і вартість додаткових робіт погоджуються із замовником до їх виконання.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section" id="quote">
+            <div class="quote-sticky">
+                <svg class="quote-lines" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+                <p class="quote-text">Форма привертає увагу, але саме сенс <br>змушує залишитись надовго.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-left">
+                <h2 class="footer-title">Простір. Світло. Матеріал.<br>Форма. Все має значення.</h2>
+                <p class="footer-copy"><span>©2019–2026 BON<span class="footer-dot">.</span></span> <span>Всі права захищені.</span></p>
+            </div>
+
+            <div class="footer-info">
+                <div class="footer-row">
+                    <span class="footer-label">Зв'язатися</span>
+                    <div class="footer-value">
+                        <a href="https://t.me/bondar_olha" target="_blank" rel="noopener">Telegram</a>
+                        <a href="https://www.instagram.com/bonarchitects" target="_blank" rel="noopener">Instagram</a>
+                    </div>
+                </div>
+                <div class="footer-row">
+                    <span class="footer-label">Електронна пошта</span>
+                    <div class="footer-value">
+                        <a href="mailto:6h45m9s@gmail.com">6h45m9s@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer-row">
+                    <span class="footer-label">Ми знаходимось</span>
+                    <div class="footer-value">
+                        <span>м. Одеса<br>вул. Анатолія Бачинського, 78<br>(Простір на Неделіна)</span>
+                        <a href="https://maps.app.goo.gl/FtR865GVEq6YpNyQ6" class="footer-map-link" target="_blank" rel="noopener">Показати на карті</a>
+                    </div>
+                </div>
+                <div class="footer-row">
+                    <span class="footer-label">Дизайн сайту</span>
+                    <div class="footer-value"><span>Микита Вербицький</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-letters" aria-hidden="true">
+            <span class="footer-letter letter-b">B</span>
+            <span class="footer-letter letter-o">O</span>
+            <span class="footer-letter letter-n">N</span>
+        </div>
+    </footer>
+
+    <div class="contact-overlay" id="contactOverlay">
+        <div class="contact-panel" id="contactPanel">
+            <div class="contact-panel-header">
+                <span class="contact-panel-title">Контактна інформація</span>
+                <button class="contact-panel-close" id="contactPanelClose">
+                    Закрити <span class="close-icon">−</span>
+                </button>
+            </div>
+            <div class="contact-panel-body">
+                <div class="contact-row">
+                    <span class="contact-label">Зв'язатися</span>
+                    <div class="contact-value">
+                        <a href="https://t.me/bondar_olha" target="_blank" rel="noopener">Telegram</a>
+                        <a href="https://www.instagram.com/bonarchitects" target="_blank" rel="noopener">Instagram</a>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Електронна пошта</span>
+                    <div class="contact-value">
+                        <a href="mailto:6h45m9s@gmail.com">6h45m9s@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Ми знаходимось</span>
+                    <div class="contact-value">
+                        м. Одеса<br>
+                        вул. Анатолія Бачинського, 78<br>
+                        (Простір на Неделіна)
+                        <a href="https://maps.app.goo.gl/FtR865GVEq6YpNyQ6" class="contact-map-link" target="_blank" rel="noopener">Показати на карті</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/quote-lines.js"></script>
+</body>
+</html>

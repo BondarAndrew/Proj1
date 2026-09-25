@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Помилка 404 — BON</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon/favicon-192.png">
+    <link rel="apple-touch-icon" href="img/favicon/favicon-180.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="error-page">
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <a href="index.html" class="logo-link" aria-label="На головну">
+                    <img src="img/BON_logo.svg" alt="BON" class="logo-img">
+                </a>
+            </div>
+            <a class="nav-item" href="index.html#about">
+                Про нас
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item" href="index.html#projects">
+                Проєкти
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item" href="index.html#services">
+                Послуги
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item contacts" href="#contact">
+                Контакти
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+        <button class="burger-menu" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="mobile-menu">
+            <a class="nav-item" href="index.html#about">Про нас</a>
+            <a class="nav-item" href="index.html#projects">Проєкти</a>
+            <a class="nav-item" href="index.html#services">Послуги</a>
+            <a class="nav-item contacts" href="#contact">Контакти</a>
+        </div>
+    </header>
+
+    <main class="error-main">
+        <div class="error-text">
+            <p>Помилка 404</p>
+            <p>Навіть у хорошому проєкті трапляються помилки</p>
+            <a class="error-home" href="index.html">Головна сторінка</a>
+        </div>
+
+        <div class="footer-letters" aria-hidden="true">
+            <span class="footer-letter letter-b">B</span>
+            <span class="footer-letter letter-o">O</span>
+            <span class="footer-letter letter-n">N</span>
+        </div>
+    </main>
+
+    <div class="contact-overlay" id="contactOverlay">
+        <div class="contact-panel" id="contactPanel">
+            <div class="contact-panel-header">
+                <span class="contact-panel-title">Контактна інформація</span>
+                <button class="contact-panel-close" id="contactPanelClose">
+                    Закрити <span class="close-icon">−</span>
+                </button>
+            </div>
+            <div class="contact-panel-body">
+                <div class="contact-row">
+                    <span class="contact-label">Зв'язатися</span>
+                    <div class="contact-value">
+                        <a href="https://t.me/bondar_olha" target="_blank" rel="noopener">Telegram</a>
+                        <a href="https://www.instagram.com/bonarchitects" target="_blank" rel="noopener">Instagram</a>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Електронна пошта</span>
+                    <div class="contact-value">
+                        <a href="mailto:6h45m9s@gmail.com">6h45m9s@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Ми знаходимось</span>
+                    <div class="contact-value">
+                        м. Одеса<br>
+                        вул. Анатолія Бачинського, 78<br>
+                        (Простір на Неделіна)
+                        <a href="https://maps.app.goo.gl/FtR865GVEq6YpNyQ6" class="contact-map-link" target="_blank" rel="noopener">Показати на карті</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

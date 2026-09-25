@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проєкт — BON</title>
+    <meta name="description" content="BON — архітектурна студія в Одесі. Проєктуємо інтер’єри та архітектуру, в яких форма має сенс, а кожна деталь є частиною цілого.">
+    <meta name="theme-color" content="#FAF4F0">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BON">
+    <meta property="og:locale" content="uk_UA">
+    <meta property="og:title" content="BON — архітектурна студія">
+    <meta property="og:description" content="BON — архітектурна студія в Одесі. Проєктуємо інтер’єри та архітектуру, в яких форма має сенс, а кожна деталь є частиною цілого.">
+    <meta property="og:url" content="https://bondarandrew.github.io/project.html">
+    <meta property="og:image" content="https://bondarandrew.github.io/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BON — архітектурна студія">
+    <meta name="twitter:description" content="BON — архітектурна студія в Одесі. Проєктуємо інтер’єри та архітектуру, в яких форма має сенс, а кожна деталь є частиною цілого.">
+    <meta name="twitter:image" content="https://bondarandrew.github.io/img/og-image.jpg">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon/favicon-192.png">
+    <link rel="apple-touch-icon" href="img/favicon/favicon-180.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <a href="index.html" class="logo-link" aria-label="На головну">
+                    <img src="img/BON_logo.svg" alt="BON" class="logo-img">
+                </a>
+            </div>
+            <a class="nav-item" href="index.html#about">
+                Про нас
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item" href="index.html#projects">
+                Проєкти
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item" href="index.html#services">
+                Послуги
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+            <a class="nav-item contacts" href="#contact">
+                Контакти
+                <span class="nav-dot">
+                    <svg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="3" cy="3" r="2.5" stroke="#775F53"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+        <button class="burger-menu" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="mobile-menu">
+            <a class="nav-item" href="index.html#about">Про нас</a>
+            <a class="nav-item" href="index.html#projects">Проєкти</a>
+            <a class="nav-item" href="index.html#services">Послуги</a>
+            <a class="nav-item contacts" href="#contact">Контакти</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Обложка проекта на весь экран -->
+        <section class="project-hero">
+            <picture>
+                <!-- на планшете и телефоне — вертикальная версия обложки (если есть) -->
+                <source id="projectCoverPortrait" media="(max-width: 1024px)" srcset="">
+                <img id="projectCover" src="" alt="">
+            </picture>
+            <div class="hero-caption" id="projectCaption"></div>
+        </section>
+
+        <!-- 2. Информация о проекте: год, тип, авторы и описание -->
+        <section class="project-about" id="projectAbout" hidden>
+            <div class="project-about-meta">
+                <p class="project-about-year" id="projectYear"></p>
+                <div class="project-about-credits" id="projectCredits"></div>
+            </div>
+            <div class="project-about-text" id="projectText"></div>
+        </section>
+        <!-- 3. Фотографии проекта (заполняются из gallery в js/project.js) -->
+        <section class="project-gallery" id="projectGallery" hidden></section>
+
+        <!-- 4. Следующий проект (заполняется в js/project.js по порядку PROJECT_ORDER) -->
+        <section class="next-project-section">
+            <a class="next-project" id="nextProject" href="index.html#projects">
+                <div class="next-project-head">
+                    <span>Наступний проєкт</span>
+                    <span id="nextProjectMeta"></span>
+                </div>
+                <div class="next-project-media">
+                    <img id="nextProjectImg" src="" alt="" loading="lazy">
+                    <div class="next-project-caption" id="nextProjectName"></div>
+                </div>
+            </a>
+        </section>
+
+        <!-- 5. Цитата с рисующимися линиями (та же секция, что на главной; логика в js/quote-lines.js) -->
+        <section class="quote-section" id="quote">
+            <div class="quote-sticky">
+                <svg class="quote-lines" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+                <p class="quote-text">Форма привертає увагу, але саме сенс <br>змушує залишитись надовго.</p>
+            </div>
+        </section>
+
+        <!-- Дальше сюда добавляются остальные секции проекта -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-left">
+                <h2 class="footer-title">Простір. Світло. Матеріал.<br>Форма. Все має значення.</h2>
+                <p class="footer-copy"><span>©2019–2026 BON<span class="footer-dot">.</span></span> <span>Всі права захищені.</span></p>
+            </div>
+
+            <div class="footer-info">
+                <div class="footer-row">
+                    <span class="footer-label">Зв'язатися</span>
+                    <div class="footer-value">
+                        <a href="https://t.me/bondar_olha" target="_blank" rel="noopener">Telegram</a>
+                        <a href="https://www.instagram.com/bonarchitects" target="_blank" rel="noopener">Instagram</a>
+                    </div>
+                </div>
+                <div class="footer-row">
+                    <span class="footer-label">Електронна пошта</span>
+                    <div class="footer-value">
+                        <a href="mailto:6h45m9s@gmail.com">6h45m9s@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer-row">
+                    <span class="footer-label">Ми знаходимось</span>
+                    <div class="footer-value">
+                        <span>м. Одеса<br>вул. Анатолія Бачинського, 78<br>(Простір на Неделіна)</span>
+                        <a href="https://maps.app.goo.gl/FtR865GVEq6YpNyQ6" class="footer-map-link" target="_blank" rel="noopener">Показати на карті</a>
+                    </div>
+                </div>
+                <div class="footer-row">
+                    <span class="footer-label">Дизайн сайту</span>
+                    <div class="footer-value"><span>Микита Вербицький</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-letters" aria-hidden="true">
+            <span class="footer-letter letter-b">B</span>
+            <span class="footer-letter letter-o">O</span>
+            <span class="footer-letter letter-n">N</span>
+        </div>
+    </footer>
+
+    <div class="contact-overlay" id="contactOverlay">
+        <div class="contact-panel" id="contactPanel">
+            <div class="contact-panel-header">
+                <span class="contact-panel-title">Контактна інформація</span>
+                <button class="contact-panel-close" id="contactPanelClose">
+                    Закрити <span class="close-icon">−</span>
+                </button>
+            </div>
+            <div class="contact-panel-body">
+                <div class="contact-row">
+                    <span class="contact-label">Зв'язатися</span>
+                    <div class="contact-value">
+                        <a href="https://t.me/bondar_olha" target="_blank" rel="noopener">Telegram</a>
+                        <a href="https://www.instagram.com/bonarchitects" target="_blank" rel="noopener">Instagram</a>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Електронна пошта</span>
+                    <div class="contact-value">
+                        <a href="mailto:6h45m9s@gmail.com">6h45m9s@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Ми знаходимось</span>
+                    <div class="contact-value">
+                        м. Одеса<br>
+                        вул. Анатолія Бачинського, 78<br>
+                        (Простір на Неделіна)
+                        <a href="https://maps.app.goo.gl/FtR865GVEq6YpNyQ6" class="contact-map-link" target="_blank" rel="noopener">Показати на карті</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/project.js"></script>
+    <script src="js/quote-lines.js"></script>
+</body>
+</html>

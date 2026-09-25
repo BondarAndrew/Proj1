@@ -1,0 +1,1878 @@
+@font-face {
+  font-family: 'Twid Grotesk';
+  src: url('../fonts/TwidGrotesk-Regular.woff2') format('woff2'),
+       url('../fonts/TwidGrotesk-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* учитываем фиксированную шапку 36px при переходе по якорям */
+section[id] {
+  scroll-margin-top: 36px;
+}
+
+.services-section {
+  background-color: #FAF4F0;
+  color: #372920;
+  padding: 16px 16px 40px;
+}
+
+.services-title {
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  margin-bottom: 41px;
+}
+
+.services-section,
+.services-section * {
+  color: #372920; /* Twilight Bark */
+}
+
+.services-list {
+  border-bottom: 1px solid #E6DED6;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 18.5% 21.2% 41% 1fr;
+  padding: 14px 0;
+  border-top: 1px solid #E6DED6;
+}
+
+.service-num {
+  grid-column: 1;
+  position: relative;
+  aspect-ratio: 232 / 239;
+  container-type: inline-size; /* размеры текста внутри считаются от ширины квадрата */
+  background-color: #E6DACF;
+  font-family: 'Twid Grotesk', sans-serif;
+  line-height: 110%;
+  transition: background-color 0.4s ease-in-out;
+}
+
+/* номер: по центру, при ховере уезжает в левый верхний угол */
+.service-num-label {
+  position: absolute;
+  font-size: 11.4cqw; /* cqw считается от ширины квадрата */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 0.4s ease-in-out, left 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* описание: появляется внизу слева */
+.service-num-desc {
+  position: absolute;
+  left: 8cqw;
+  right: 8cqw;
+  bottom: 8cqw;
+  font-family: 'Inter', sans-serif;
+  font-size: 7.7cqw;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.service-row:hover .service-num-label {
+  top: 8cqw;
+  left: 8cqw;
+  transform: translate(0, 0);
+}
+
+.service-row:hover .service-num-desc {
+  opacity: 1;
+}
+
+.service-row:nth-child(1):hover .service-num { background-color: #B3B495; }
+.service-row:nth-child(2):hover .service-num { background-color: #98ABB6; }
+.service-row:nth-child(3):hover .service-num { background-color: #C0B097; }
+
+.service-name {
+  grid-column: 3;
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+}
+
+.service-side {
+  grid-column: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 235px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.service-text {
+  margin: 0;
+}
+
+.service-more {
+  display: flex;
+  justify-content: space-between;
+  color: #372920;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.service-more:hover {
+  opacity: 0.6;
+}
+
+/* «Детальніше»: раскрывающийся текст прямо под описанием услуги, над кнопкой */
+.service-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease-in-out;
+}
+
+.service-row.open .service-detail {
+  grid-template-rows: 1fr;
+}
+
+.service-detail-inner {
+  overflow: hidden;
+  min-height: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.service-detail-inner p {
+  margin-top: 14px;
+}
+
+.service-detail-inner p:first-child {
+  margin-top: 14px;
+}
+
+.service-detail-inner p:last-child {
+  margin-bottom: 14px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+body {
+  font-family: 'Twid Grotesk', sans-serif;
+}
+
+/* Main content spacing */
+main {
+  padding-top: 36px;
+}
+
+/* Hero Slider styles */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 36px);
+  overflow: hidden;
+}
+
+.hero-track {
+  will-change: transform;
+  display: flex;
+  width: 400%;
+  height: 100%;
+  transition: transform 0.7s ease-in-out;
+}
+
+.hero-slide {
+  width: 25%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-slider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  pointer-events: none;
+}
+
+.hero-caption,
+.hero-counter {
+  position: absolute;
+  bottom: 32px;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.hero-caption {
+  left: 32px;
+  color: #ffffff;
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.8s ease-in-out;
+}
+
+.hero-caption .arrow {
+  margin-left: 12px;
+}
+
+.hero-counter {
+  right: 32px;
+  color: #ffffff;
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Header styles */
+header {
+  background: #F7F3EC;
+  color: #372920;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 36px;
+  padding-left: 32px;
+  align-items: center;
+  width: 100%;
+}
+
+.header-inner > * {
+  justify-self: stretch;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 9px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-img {
+  width: 47.45px;
+  height: 18px;
+  display: block;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: #372920;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  padding-left: 24px;
+  padding-right: 9px;
+  transition: background-color 0.25s ease-in-out;
+  justify-self: stretch;
+}
+
+.nav-item:visited {
+  color: #372920;
+  text-decoration: none;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: #E5D8CF;
+}
+
+.nav-item:hover .nav-dot circle,
+.nav-item.active .nav-dot circle {
+  fill-opacity: 1;
+}
+
+.nav-dot {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-dot circle {
+  fill: #775F53;
+  fill-opacity: 0;
+  stroke: #775F53;
+  transition: fill-opacity 0.25s ease-in-out;
+}
+
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger-menu span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #372920;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 36px;
+  left: 0;
+  right: 0;
+  background: #F7F3EC;
+  padding: 20px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu .nav-item {
+  display: flex;
+  position: static;
+  height: auto;
+  padding-left: 0;
+}
+
+/* Contact Panel styles */
+.contact-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  z-index: 2000;
+  visibility: hidden;
+  transition: background 0.4s ease-in-out, visibility 0s linear 0.4s;
+}
+
+.contact-overlay.open {
+  background: rgba(0, 0, 0, 0.3);
+  visibility: visible;
+  transition: background 0.4s ease-in-out, visibility 0s linear 0s;
+}
+
+.contact-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  min-width: 480px;
+  height: 100vh;
+  background: #F7F3EC;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-overlay.open .contact-panel {
+  transform: translateX(0);
+}
+
+.contact-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.contact-panel-title {
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #372920;
+}
+
+.contact-panel-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #372920;
+}
+
+.contact-panel-body {
+  padding-top: 29%;
+  padding-bottom: 40px; /* небольшой запас; большой нижний отступ давал лишний скролл */
+  padding-left: 20.8%;
+  padding-right: 20.8%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 17px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  color: #372920;
+}
+
+.contact-panel-body * {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 17px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 3.3%;
+  margin-bottom: 40px;
+}
+
+.contact-label {
+  width: 180px;
+  flex-shrink: 0;
+  color: #372920;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contact-value {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+.contact-value a {
+  color: #372920;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.contact-value a:hover {
+  opacity: 0.7;
+}
+
+/* почта без подчёркивания (в футере и в панели контактов) */
+.contact-value a[href^="mailto:"],
+.footer-value a[href^="mailto:"] {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-value a.contact-map-link {
+  color: #372920;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+  align-self: flex-start;
+  display: inline-block;
+  width: auto;
+  margin-top: 4px;
+}
+
+.contact-value a.contact-map-link:hover {
+  opacity: 0.7;
+}
+
+/* About Section styles */
+.about-section {
+  background-color: #FAF4F0;
+  min-height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.about-block-1 {
+  --video-h: calc((100vw - 32px) * 0.182 * 148 / 217); /* высота видео */
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+
+/* Блок 1 растянут вниз до уровня фото (+ высота видео), чтобы видео
+   липло к экрану и отлипало, когда окажется на одном уровне с фото */
+.about-block-1 .about-title-wrap {
+  padding-bottom: calc(320px + var(--video-h));
+}
+
+.about-block-2 {
+  display: grid;
+  grid-template-columns: 18% 20% 19.9% 19.4% 1fr;
+  column-gap: 0;
+  max-width: none;
+  margin-top: calc(-320px - (100vw - 32px) * 0.182 * 148 / 217); /* поднимаем на растянутую часть блока 1 */
+}
+
+.about-block-2 .about-text-group {
+  grid-column: 2 / 4;
+  margin-left: 0;
+  margin-top: 80px; /* отступ от заголовка до 1-го абзаца */
+  width: 290px; /* фикс. ширина под шрифт 15px: 1-й абзац в 3 строки */
+}
+
+.about-block-2 .about-img-large {
+  grid-column: 4;
+  width: 19.444vw; /* 280px при макете 1440px */
+  aspect-ratio: 280 / 360;
+  object-fit: cover;
+  margin-top: 341px; /* 80px + 1-й абзац (3 строки ≈ 61px) + 24px gap + 176px — верх фото на уровне верха 2-го абзаца */
+}
+
+.about-title-wrap {
+  margin-left: 0;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.about-title {
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.about-section .about-title,
+.about-section .about-text {
+  color: #372920;
+}
+
+.about-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  max-width: none;
+}
+
+/* Рельса для липкого видео: тянется от верха блока до уровня фото */
+.about-video-rail {
+  width: 18.2%;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.about-video-small {
+  position: sticky;
+  top: 52px; /* 36px шапка + 16px отступ */
+  width: 100%;
+  aspect-ratio: 217 / 148;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0;
+}
+
+.about-img-large {
+  width: 400px;
+  height: auto;
+}
+
+.about-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-left: 30%;
+}
+
+.about-text-group .about-text:nth-child(2) {
+  margin-top: 176px; /* 24px gap + 176px = 200px между 1-м и 2-м абзацем */
+}
+
+/* Projects Section styles */
+.projects-section {
+  background-color: #FAF4F0;
+  color: #372920;
+  padding: 80px 16px 120px;
+}
+
+.projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 48px;
+}
+
+.projects-title {
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+}
+
+/* Дополнительные проекты: раскрываются по кнопке «Всі проєкти» */
+.projects-extra {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.projects-extra.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.projects-extra-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.projects-extra .projects-grid {
+  padding-top: 56px;
+}
+
+.projects-more.hidden {
+  display: none;
+}
+/* Кнопки «Всі проєкти» / «Приховати»: строка без заливки — текст слева, кружок справа, тонкая линия снизу */
+.projects-more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  margin-top: 56px; /* как row-gap между проектами */
+  padding: 0 16px;
+  border-bottom: 1px solid #E6DED6;
+  color: #372920;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+}
+
+/* кружок и черта берут цвет текста, чтобы читаться и на тёмном фоне */
+.projects-more .nav-dot circle {
+  stroke: #775F53;
+  fill: #775F53;
+  fill-opacity: 0;
+}
+
+.projects-more .nav-dot rect {
+  fill: #775F53;
+}
+
+/* наведение как у пунктов шапки: светлая заливка и закрашенный кружок */
+.projects-more:hover {
+  background-color: #E5D8CF;
+  border-bottom-color: transparent;
+}
+
+.projects-more:hover .nav-dot circle {
+  fill-opacity: 1;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 16px;
+  row-gap: 56px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* подпись над фото: 008 · RISE Café · Кафе */
+.project-info {
+  display: flex;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.project-info span + span::before {
+  content: '·';
+  margin-right: 8px;
+}
+
+.project-info {
+  color: #372920; /* Twilight Bark */
+}
+
+.project-media {
+  overflow: hidden;
+  aspect-ratio: 696 / 460;
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+.project-card:hover .project-media img {
+  transform: scale(1.03);
+}
+/* FAQ Section styles */
+.faq-section {
+  background-color: #FAF4F0;
+  color: #372920;
+  padding: 88px 16px 160px;
+}
+
+.faq-inner {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.faq-title {
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  margin-bottom: 42px;
+}
+
+.faq-list {
+  border-top: 1px solid #E6DED6;
+  border-bottom: 1px solid #E6DED6;
+}
+
+.faq-item + .faq-item {
+  border-top: 1px solid #E6DED6;
+}
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: #372920;
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 0.01em;
+}
+
+.faq-plus {
+  flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+}
+
+.faq-plus::before {
+  content: '+';
+}
+
+.faq-q[aria-expanded="true"] .faq-plus::before {
+  content: '−';
+}
+
+/* ответ раскрывается плавно */
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease-in-out;
+}
+
+.faq-item.open .faq-a {
+  grid-template-rows: 1fr;
+}
+
+.faq-a-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.faq-a-inner p:first-child {
+  margin-top: 10px;
+}
+
+.faq-a-inner p:last-child {
+  margin-bottom: 22px;
+}
+
+.faq-a-inner p {
+  max-width: 66%;
+  margin-bottom: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  color: #372920;
+}
+
+/* нумерованный список внутри ответа FAQ */
+.faq-a-inner ol {
+  max-width: 66%;
+  margin: 0 0 14px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  color: #372920;
+}
+
+.faq-a-inner a {
+  color: #372920;
+  text-decoration: underline;
+}
+
+/* Quote Section styles: линии рисуются сами, когда секция появляется на экране */
+.quote-section {
+  background-color: #FAF4F0;
+}
+
+.quote-sticky {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-lines {
+  will-change: transform, opacity;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.quote-lines path {
+  fill: none;
+  stroke: #E6DED6;
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.quote-text {
+  position: relative;
+  text-align: center;
+  color: #372920;
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 48px);
+  line-height: 130%;
+  letter-spacing: -0.01em;
+}
+
+/* Project page: обложка проекта на весь экран */
+.project-hero {
+  position: relative;
+  /* отступ под фиксированной шапкой уже задаёт main { padding-top: 36px } */
+  height: calc(100vh - 36px);
+  overflow: hidden;
+}
+
+.project-hero picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.project-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* лёгкое появление: обложка проявляется и чуть «отъезжает» назад */
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1s ease, transform 1.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.project-hero.ready img {
+  opacity: 1;
+  transform: none;
+}
+
+.project-hero .hero-caption {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.9s ease 0.5s, transform 0.9s ease 0.5s;
+}
+
+.project-hero.ready .hero-caption {
+  opacity: 1;
+  transform: none;
+}
+
+/* плавный уход главной страницы при переходе на проект */
+body.leaving {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-hero img,
+  .project-hero .hero-caption {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.project-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  pointer-events: none;
+}
+
+.project-hero .hero-caption {
+  z-index: 10;
+}
+
+/* Project page: информация о проекте (год, авторы, описание) */
+.project-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+  padding: 16px 16px 240px; /* текст занимает чуть больше половины высоты секции */
+  background-color: #FAF4F0;
+  color: #372920;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.project-about[hidden] {
+  display: none;
+}
+
+.project-about-year {
+  margin-bottom: 10px;
+}
+
+.project-credit {
+  margin-bottom: 13px;
+}
+
+.project-credit-role {
+  font-weight: 500;
+}
+
+/* фиксированная ширина, чтобы переносы строк были как в макете (3 + 2 + 2 строки) */
+.project-about-text {
+  max-width: 700px;
+  /* прижат к правому краю (с отступом 16px, как в макете) */
+  margin-left: auto;
+}
+
+.project-about-text p {
+  margin-bottom: 13px;
+}
+
+/* Project page: галерея фотографий (вертикальные парами, wide — на всю ширину) */
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 16px; /* без нижнего отступа: линии следующей секции «вылезают» прямо из последнего фото */
+  background-color: #FAF4F0;
+}
+
+.project-gallery[hidden] {
+  display: none;
+}
+
+.project-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 696 / 800;
+  object-fit: cover;
+  background-color: #E5D8CF; /* пока фото грузится */
+}
+
+.project-photo.wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 1408 / 800;
+}
+
+/* Project page: блок «Наступний проєкт» */
+.next-project-section {
+  padding: 100px 16px 16px;
+  background-color: #FAF4F0;
+}
+
+.next-project {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #372920;
+  text-decoration: none;
+}
+
+.next-project-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.next-project-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1408 / 640;
+  min-height: 260px;
+  background-color: #E5D8CF;
+}
+
+.next-project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.next-project-media::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  pointer-events: none;
+}
+
+.next-project:hover .next-project-media img {
+  transform: scale(1.03);
+}
+
+.next-project-caption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 1;
+  color: #FAF4F0;
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4.2vw, 40px);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+}
+
+/* Footer styles */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 36px); /* минус высота фиксированной шапки, чтобы она не закрывала верх футера */
+  padding: 16px 16px 0;
+  overflow: hidden;
+  background-color: #E5D8CF;
+  color: #372920;
+}
+
+.site-footer * {
+  color: #372920;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-title {
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.01em;
+}
+
+.footer-copy,
+.footer-row {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.footer-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 36px;
+}
+
+.footer-row:last-child {
+  margin-bottom: 0;
+}
+
+.footer-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.footer-value a {
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-value a:hover {
+  opacity: 0.7;
+}
+
+/* Буквы B O N: B и N стартуют снизу, O сверху, и одновременно меняются местами.
+   Анимируется top: 0 — верх блока, calc(100% - 1em) — низ блока (1em = высота буквы) */
+.footer-letters {
+  position: relative;
+  flex: 1;
+  min-height: 260px;
+  margin-top: 32px;
+}
+
+.footer-letter {
+  position: absolute;
+  font-family: 'Twid Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 6vw;
+  line-height: 1;
+  top: calc(100% - 1em);
+  animation-duration: 3.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.letter-b {
+  left: 0;
+  animation-name: letter-up;
+}
+
+.letter-n {
+  right: 0;
+  animation-name: letter-up;
+}
+
+.letter-o {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-name: letter-down;
+}
+
+/* B и N: снизу -> наверх (на уровень буквы O) -> обратно */
+@keyframes letter-up {
+  0%, 4%    { top: calc(100% - 1em); }
+  46%, 54%  { top: 0; }
+  96%, 100% { top: calc(100% - 1em); }
+}
+
+/* O: сверху -> вниз (на уровень букв B и N) -> обратно */
+@keyframes letter-down {
+  0%, 4%    { top: 0; }
+  46%, 54%  { top: calc(100% - 1em); }
+  96%, 100% { top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-letter {
+    animation: none;
+  }
+}
+
+/* Страница ошибки 404 (буквы B O N используют те же стили, что и в футере) */
+.error-page {
+  background-color: #FAF4F0;
+  color: #372920;
+}
+
+.error-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: calc(36px + 9vw) 16px 0;
+  overflow: hidden;
+}
+
+.error-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+}
+
+.error-text p,
+.error-home {
+  color: #372920;
+}
+
+.error-home {
+  margin-top: 24px;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.error-home:hover {
+  opacity: 0.7;
+}
+
+/* На 404 буквы живут по-другому: O стоит на месте (примерно по центру экрана),
+   а B и N прыгают снизу на уровень O, затем в самый верх и обратно вниз. */
+.error-main {
+  position: relative;
+  --o-top: calc(44vh - 36px); /* высота буквы O (на её уровень прыгают B и N) */
+}
+
+.error-text {
+  position: relative;
+  z-index: 1;
+}
+
+.error-main .footer-letters {
+  position: absolute;
+  top: 36px;              /* под шапкой */
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  margin-top: 0;
+  min-height: 0;
+}
+
+.error-main .footer-letter {
+  color: #372920;
+}
+
+.error-main .letter-o {
+  top: var(--o-top);
+  animation: none;
+}
+
+.error-main .letter-b,
+.error-main .letter-n {
+  animation-name: error-letter-jump;
+  animation-duration: 4.5s;
+}
+
+@keyframes error-letter-jump {
+  0%, 1%    { top: calc(100% - 1em); }   /* внизу */
+  21%, 24%  { top: var(--o-top); }  /* вверх: на уровне буквы O */
+  43%, 47%  { top: 8px; }                /* в самом верху */
+  66%, 69%  { top: var(--o-top); }  /* вниз: снова на уровне буквы O */
+  91%, 100% { top: calc(100% - 1em); }   /* и только потом в самый низ */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error-main .letter-b,
+  .error-main .letter-n {
+    animation: none;
+  }
+}
+
+/* 404 на планшете и телефоне: текст на ~21% высоты экрана, O чуть ниже середины, буквы крупнее */
+@media (max-width: 1024px) {
+  .error-main {
+    padding-top: 20.5vh;
+    --o-top: calc(49.7vh - 36px - 0.5em);
+  }
+
+  .error-main .footer-letter {
+    font-size: 10.6vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .error-main .footer-letter {
+    font-size: 21vw;
+  }
+}
+/* Уведомление «скопировано» (появляется снизу по центру) */
+.copy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 3000;
+  max-width: calc(100% - 32px);
+  padding: 12px 20px;
+  border-radius: 999px; /* полностью закруглённая «таблетка» */
+  background-color: #372920;
+  color: #FAF4F0;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 135%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+  pointer-events: none;
+}
+
+.copy-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0s;
+}
+
+/* Лёгкое проявление блоков при скролле (класс добавляется из main.js) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Tablet styles (до 1024px): подпись и счётчик слайдера остаются внизу, размер меньше */
+@media (max-width: 1024px) {
+  .hero-caption,
+  .hero-counter {
+    bottom: 24px;
+    font-size: clamp(28px, 4.2vw, 40px);
+  }
+
+  .hero-caption {
+    left: 16px;
+  }
+
+  .hero-counter {
+    right: 16px;
+  }
+
+  /* Контактная панель на планшете: шире (70% экрана), контент начинается на 210px сверху */
+  .contact-panel {
+    width: 70.5vw;
+    min-width: 0;
+  }
+
+  .contact-panel-body {
+    padding-top: 210px;
+    padding-left: 12.1%;
+    padding-right: 12.1%;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  /* Подпись слайдера не должна наезжать на счётчик: она занимает не больше 72% ширины
+     и при необходимости переносится на вторую строку */
+  .hero-caption {
+    max-width: 72%;
+    font-size: 24px;
+  }
+
+  .hero-counter {
+    font-size: 24px;
+  }
+
+  /* Секция «Про нас» на телефоне: одна колонка.
+     Порядок: заголовок, 1-й абзац, видео (по центру), 2-й и 3-й абзацы, фото на всю ширину.
+     Блоки «растворены» через display: contents, чтобы переставить элементы через order. */
+  .about-section {
+    padding: 16px;
+    min-height: 0;
+  }
+
+  .about-block-1,
+  .about-block-2,
+  .about-text-group {
+    display: contents;
+  }
+
+  .about-block-1 .about-title-wrap {
+    order: 1;
+    padding-bottom: 0;
+  }
+
+  .about-title {
+    font-size: min(8.2vw, 32px);
+  }
+
+  .about-title br {
+    display: none;
+  }
+
+  .about-text-group .about-text:nth-child(1) {
+    order: 2;
+    margin-top: 16px;
+  }
+
+  .about-video-rail {
+    order: 3;
+    width: 50%;
+    align-self: center;
+    margin-top: 90px;
+  }
+
+  .about-video-small {
+    position: static;
+  }
+
+  .about-text-group .about-text:nth-child(2) {
+    order: 4;
+    margin-top: 130px;
+  }
+
+  .about-text-group .about-text:nth-child(3) {
+    order: 5;
+    margin-top: 14px;
+  }
+
+  .about-block-2 .about-img-large {
+    order: 6;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .projects-section {
+    padding: 48px 20px 80px;
+  }
+
+  .projects-title,
+  .services-title {
+    font-size: 28px;
+  }
+
+  /* Услуги на телефоне: цветной блок с номером и описанием (всегда в «ховер»-виде),
+     под ним название, текст и «Детальніше +» */
+  .services-section {
+    padding: 16px 16px 40px;
+  }
+
+  .service-row {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+    padding: 14px 0 28px;
+  }
+
+  .service-num,
+  .service-name,
+  .service-side {
+    grid-column: 1;
+  }
+
+  .service-num {
+    max-width: none;
+    aspect-ratio: 253 / 141;
+  }
+
+  .service-row:nth-child(1) .service-num { background-color: #B3B495; }
+  .service-row:nth-child(2) .service-num { background-color: #98ABB6; }
+  .service-row:nth-child(3) .service-num { background-color: #C0B097; }
+
+  .service-num-label {
+    top: 16px;
+    left: 16px;
+    transform: none;
+    font-size: 24px;
+  }
+
+  .service-num-desc {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    font-size: 15px;
+    opacity: 1;
+  }
+
+  .service-name {
+    margin-top: 16px;
+  }
+
+  .service-side {
+    margin-top: 10px;
+  }
+
+  .faq-section {
+    padding: 56px 20px 80px;
+  }
+
+  .faq-inner {
+    width: 100%;
+  }
+
+  .faq-title {
+    font-size: 28px;
+    margin-bottom: 28px;
+  }
+
+  .faq-a-inner ol,
+  .faq-a-inner p {
+    max-width: 100%;
+  }
+
+  .quote-text {
+    padding: 0 20px;
+  }
+
+  .project-about {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+    min-height: 0;
+    padding: 20px 20px 40px;
+  }
+
+  .project-about-text {
+    max-width: none;
+    margin-left: 0;
+  }
+
+  /* фото проекта идут в один столбец */
+  .project-gallery {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  /* Футер на телефоне: заголовок, контакты в две колонки, копирайт в две колонки, буквы */
+  .site-footer {
+    padding: 16px 16px 0;
+  }
+
+  /* «растворяем» обёртки, чтобы расставить элементы через order */
+  .footer-top,
+  .footer-left {
+    display: contents;
+  }
+
+  .footer-title {
+    order: 1;
+    font-size: 28px;
+  }
+
+  .footer-info {
+    order: 2;
+    margin-top: 50px;
+  }
+
+  .footer-row {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 24px;
+  }
+
+  /* на телефоне строки адреса нет */
+  .footer-row:nth-child(3) {
+    display: none;
+  }
+
+  .footer-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer-left .footer-copy {
+    order: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 24px;
+  }
+
+  .footer-dot {
+    display: none;
+  }
+
+  .footer-letters {
+    order: 4;
+    min-height: 320px;
+    margin-top: 40px;
+  }
+
+  .footer-letter {
+    font-size: 21vw;
+  }
+
+  .quote-text br {
+    display: none;
+  }
+
+  .service-side {
+    max-width: none;
+    gap: 14px; /* «Детальніше» ближе к своему тексту, чем к следующему блоку */
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .projects-extra .projects-grid {
+    padding-top: 40px;
+  }
+
+  .projects-more {
+    margin-top: 40px; /* как row-gap между проектами */
+  }
+
+  /* Шапка на телефоне: слева логотип, справа кнопка «Меню +» (правая половина) */
+  .header-inner {
+    grid-template-columns: 1fr;
+    padding-left: 16px;
+  }
+
+  .logo {
+    padding-left: 0;
+  }
+
+  .nav-item {
+    display: none;
+  }
+
+  .nav-dot {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    right: 0;
+    transform: none;
+    width: 50%;
+    height: 36px;
+    padding: 0 16px 0 12px;
+    border-left: 1px solid #E6DED6;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 135%;
+    letter-spacing: -0.01em;
+    color: #372920;
+  }
+
+  /* три полоски заменены подписью «Меню» и плюсом/минусом */
+  .burger-menu span {
+    display: none;
+  }
+
+  .burger-menu::before {
+    content: 'Меню';
+  }
+
+  .burger-menu::after {
+    content: '+';
+  }
+
+  .burger-menu.active::after {
+    content: '−';
+  }
+
+  /* Выпадающее меню: строки на всю ширину, справа кружок */
+  .mobile-menu {
+    top: 36px;
+    padding: 0;
+    gap: 0;
+    background: #FAF4F0;
+    /* плавное появление: меню всегда в разметке, а показывается прозрачностью */
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+  }
+
+  .mobile-menu.active {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0s;
+  }
+
+  .mobile-menu .nav-item {
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+    padding: 0 16px;
+    border-top: 1px solid #E6DED6;
+    font-size: 15px;
+  }
+
+  .mobile-menu .nav-item::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    box-sizing: border-box;
+    border: 1px solid #775F53;
+    border-radius: 50%;
+    transition: background-color 0.25s ease-in-out;
+  }
+
+  .mobile-menu .nav-item:hover,
+  .mobile-menu .nav-item:active,
+  .mobile-menu .nav-item.active {
+    background-color: #E5D8CF;
+  }
+
+  .mobile-menu .nav-item:hover::after,
+  .mobile-menu .nav-item:active::after,
+  .mobile-menu .nav-item.active::after {
+    background-color: #775F53;
+  }
+
+  /* затемнение страницы под открытым меню */
+  .mobile-menu::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .contact-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact-panel-body {
+    padding-top: 210px;
+    padding-bottom: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 15px;
+  }
+
+  .contact-panel-body * {
+    font-size: 15px;
+  }
+
+  /* подпись слева, значение начинается ровно с середины экрана */
+  .contact-row {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .contact-label {
+    width: 163px;
+    white-space: normal;
+  }
+}
