@@ -61,7 +61,8 @@
   }
 
   // пока линии рисуются, весь узор слегка приближается к зрителю
-  const ZOOM_TO = 1.12;     // итоговое увеличение (1 = без приближения)
+  const ZOOM_TO = 1.25;        // итоговое увеличение (1 = без приближения) — стало заметнее
+  const ZOOM_DURATION = 6000;  // мс — длительность самого приближения
   const easeOut = t => 1 - Math.pow(1 - t, 2);
 
   const HOLD = 4000;        // сколько узор «висит» готовым перед повтором, мс
@@ -76,7 +77,8 @@
     function frame(now) {
       const p = Math.min((now - t0) / TOTAL, 1);
       draw(p);
-      svg.style.transform = 'scale(' + (1 + (ZOOM_TO - 1) * easeOut(p)) + ')';
+      const zoomP = Math.min((now - t0) / ZOOM_DURATION, 1);
+      svg.style.transform = 'scale(' + (1 + (ZOOM_TO - 1) * easeOut(zoomP)) + ')';
       if (p < 1) requestAnimationFrame(frame);
       else setTimeout(restart, HOLD);
     }

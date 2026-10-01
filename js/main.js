@@ -27,38 +27,6 @@ if (burgerMenu && mobileMenu) {
   });
 }
 
-// Подсветка пункта меню для текущей секции
-const spySections = ['about', 'projects', 'services']
-  .map(id => document.getElementById(id))
-  .filter(Boolean);
-const spyLinks = document.querySelectorAll('.nav-item[href^="#"]:not(.contacts)');
-
-function updateActiveNav() {
-  // секция считается текущей, когда её верх поднялся выше 40% высоты окна
-  const line = window.innerHeight * 0.4;
-  let currentId = null;
-  spySections.forEach(section => {
-    if (section.getBoundingClientRect().top <= line) currentId = section.id;
-  });
-  spyLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
-  });
-}
-
-// обновляем не чаще одного раза за кадр, чтобы скролл не тормозил
-let navTicking = false;
-function requestNavUpdate() {
-  if (navTicking) return;
-  navTicking = true;
-  requestAnimationFrame(() => {
-    navTicking = false;
-    updateActiveNav();
-  });
-}
-
-window.addEventListener('scroll', requestNavUpdate, { passive: true });
-window.addEventListener('resize', requestNavUpdate);
-updateActiveNav();
 
 // Видео в блоке «Про нас» играет только пока оно видно на экране
 const aboutVideo = document.querySelector('.about-video-small');
@@ -70,6 +38,39 @@ if (aboutVideo && 'IntersectionObserver' in window) {
     });
   }).observe(aboutVideo);
 }
+
+// Картинки слайдера иногда «пропадают» (белый экран), если вкладка была
+// открыта очень долго — браузер выгружает декодированную картинку из памяти
+// (экономия ресурсов у фоновых вкладок), а перерисовать её сам не может,
+// потому что интервал для этого не наступает. Проверяем на возврате во
+// вкладку и перезапрашиваем те фото, которые не отрисовались.
+function watchHeroImages() {
+  const imgs = document.querySelectorAll('.hero-slide img');
+  if (!imgs.length) return;
+
+  function reload(img) {
+    const src = img.src.split('?')[0];
+    img.src = src + '?r=' + Date.now();
+  }
+
+  imgs.forEach(img => {
+    img.addEventListener('error', () => reload(img));
+  });
+
+  function checkAll() {
+    if (document.hidden) return;
+    imgs.forEach(img => {
+      if (img.complete && img.naturalWidth === 0) reload(img);
+    });
+  }
+
+  document.addEventListener('visibilitychange', checkAll);
+  window.addEventListener('pageshow', checkAll);
+  // подстраховка и для вкладки, которая всё время была активна
+  // (например, файл лежит в OneDrive и на секунду «отвалился» на подгрузке из облака)
+  setInterval(checkAll, 5000);
+}
+watchHeroImages();
 
 // Hero Slider
 const heroTrack = document.querySelector('.hero-track');
