@@ -39,84 +39,40 @@ if (aboutVideo && 'IntersectionObserver' in window) {
   }).observe(aboutVideo);
 }
 
-// Картинки слайдера иногда «пропадают» (белый экран), если вкладка была
-// открыта очень долго — браузер выгружает декодированную картинку из памяти
-// (экономия ресурсов у фоновых вкладок), а перерисовать её сам не может,
-// потому что интервал для этого не наступает. Проверяем на возврате во
-// вкладку и перезапрашиваем те фото, которые не отрисовались.
-function watchHeroImages() {
-  const imgs = document.querySelectorAll('.hero-slide img');
-  if (!imgs.length) return;
-
-  function reload(img) {
-    const src = img.src.split('?')[0];
-    img.src = src + '?r=' + Date.now();
-  }
-
-  imgs.forEach(img => {
-    img.addEventListener('error', () => reload(img));
-  });
-
-  function checkAll() {
-    if (document.hidden) return;
-    imgs.forEach(img => {
-      if (img.complete && img.naturalWidth === 0) reload(img);
-    });
-  }
-
-  document.addEventListener('visibilitychange', checkAll);
-  window.addEventListener('pageshow', checkAll);
-  // подстраховка и для вкладки, которая всё время была активна
-  // (например, файл лежит в OneDrive и на секунду «отвалился» на подгрузке из облака)
-  setInterval(checkAll, 5000);
-}
-watchHeroImages();
-
-// Hero Slider
-const heroTrack = document.querySelector('.hero-track');
+// Hero Slider (Swiper — см. swiper@11 в <head>/перед main.js)
+const heroSliderEl = document.querySelector('.hero-slider');
 const counterEl = document.querySelector('.hero-counter');
 const captionEl = document.getElementById('heroCaption');
-const currentCounter = document.querySelector('.current');
+const currentCounter = counterEl && counterEl.querySelector('.current');
 
-if (heroTrack && counterEl && captionEl && currentCounter) {
-  let index = 0;
-
+if (heroSliderEl && counterEl && captionEl && currentCounter && typeof Swiper !== 'undefined') {
   const captions = [
     'RISE Café <span class="arrow">→</span>',
     'Квартира у ЖК «Кандинський» <span class="arrow">→</span>',
     'Приватний будинок у Східниці <span class="arrow">→</span>'
   ];
 
-  function nextSlide() {
-    // 1. Сначала прячем текст и счётчик
-    captionEl.style.opacity = '0';
-    counterEl.style.opacity = '0';
-
-    // 2. Через небольшую паузу запускаем свайп картинки
-    setTimeout(() => {
-      index++;
-      heroTrack.style.transform = `translateX(-${index * 25}%)`;
-
-      // 3. Ждём окончания свайпа картинки, затем обновляем текст/счётчик и проявляем их
-      setTimeout(() => {
-        captionEl.innerHTML = captions[index % 3];
-        currentCounter.textContent = (index % 3) + 1;
+  new Swiper(heroSliderEl, {
+    loop: true,
+    speed: 1200,
+    allowTouchMove: false, // слайды листаются только автоплеем, вручную — нельзя
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    on: {
+      slideChangeTransitionStart() {
+        captionEl.style.opacity = '0';
+        counterEl.style.opacity = '0';
+      },
+      slideChangeTransitionEnd() {
+        captionEl.innerHTML = captions[this.realIndex];
+        currentCounter.textContent = this.realIndex + 1;
         captionEl.style.opacity = '1';
         counterEl.style.opacity = '1';
-
-        // Логика с дубликатом слайда
-        if (index === 3) {
-          heroTrack.style.transition = 'none';
-          heroTrack.style.transform = 'translateX(0%)';
-          heroTrack.offsetHeight; // принудительный reflow
-          heroTrack.style.transition = 'transform 0.7s ease-in-out';
-          index = 0;
-        }
-      }, 700); // = длительности transform-transition картинки
-    }, 300); // небольшая пауза после исчезновения текста
-  }
-
-  setInterval(nextSlide, 2700);
+      },
+    },
+  });
 }
 
 // Contact Panel
@@ -234,8 +190,17 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       // обычный клик; с Ctrl/Cmd/Shift ссылка открывается как всегда
       if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
       e.preventDefault();
+      let navigated = false;
+      const go = () => {
+        if (navigated) return;
+        navigated = true;
+        window.location.href = card.href;
+      };
+      // ждём конца CSS-перехода body.leaving, с запасным таймаутом на случай,
+      // если transitionend по какой-то причине не сработает
+      document.body.addEventListener('transitionend', go, { once: true });
+      setTimeout(go, 400);
       document.body.classList.add('leaving');
-      setTimeout(() => { window.location.href = card.href; }, 280);
     });
   });
   // при возврате кнопкой «Назад» страница не должна остаться погашенной

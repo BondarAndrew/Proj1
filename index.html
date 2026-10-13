@@ -27,6 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
     <link rel="preload" href="fonts/TwidGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -84,23 +85,20 @@
     </header>
 
     <main>
-        <section class="hero-slider">
-            <div class="hero-track">
-                <div class="hero-slide">
+        <section class="hero-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide hero-slide">
                     <img src="img/Hero/Hero1.webp" alt="RISE Café">
                 </div>
-                <div class="hero-slide">
+                <div class="swiper-slide hero-slide">
                     <img src="img/Hero/Hero2.webp" alt="Квартира у ЖК Кандинський">
                 </div>
-                <div class="hero-slide">
+                <div class="swiper-slide hero-slide">
                     <img src="img/Hero/Hero3.webp" alt="Приватний будинок у Східниці">
-                </div>
-                <div class="hero-slide">
-                    <img src="img/Hero/Hero1.webp" alt="RISE Café">
                 </div>
             </div>
 
-            <!-- Текст и счётчик теперь СНАРУЖИ трека, фиксированы в углах -->
+            <!-- Текст и счётчик СНАРУЖИ swiper-wrapper, фиксированы в углах -->
             <div class="hero-caption" id="heroCaption">RISE Café <span class="arrow">→</span></div>
             <div class="hero-counter"><span class="current">1</span>/<span class="total">3</span></div>
         </section>
@@ -439,6 +437,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/quote-paths.js"></script>
     <script src="js/quote-lines.js"></script>
