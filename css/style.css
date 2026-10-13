@@ -1450,10 +1450,12 @@ body.leaving {
 .error-main .footer-letters {
   position: absolute;
   top: 36px;              /* под шапкой */
-  left: 0; /* .error-main уже даёт 16px padding — тут 0, иначе отступ задваивается */
+  left: 0;
   right: 0;
   bottom: 0;
   margin-top: 0;
+  margin-left: 16px;  /* буква B — 16px от левого края экрана */
+  margin-right: 16px; /* буква N — 16px от правого края экрана */
   min-height: 0;
 }
 
